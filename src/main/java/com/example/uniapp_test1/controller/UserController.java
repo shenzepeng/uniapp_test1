@@ -48,7 +48,7 @@ public class UserController {
         return SzpJsonResult.ok(userService.updateUser(user));
     }
     @ApiOperation("insertUser")
-    @PutMapping
+    @PostMapping
     public SzpJsonResult<Integer> insertUser(@RequestBody User user){
         return SzpJsonResult.ok(userService.insertUser(user));
     }

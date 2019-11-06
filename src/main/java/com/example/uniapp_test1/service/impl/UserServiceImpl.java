@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByPhoneNumberAndPassword(String phoneNumber, String password) {
         List<User> userBydUsernameAndPassword = userDao.findUserBydUsernameAndPassword(phoneNumber, password);
-        if (CollectionUtils.isEmpty(userBydUsernameAndPassword)) {
+        if (!CollectionUtils.isEmpty(userBydUsernameAndPassword)) {
             return userBydUsernameAndPassword.get(0);
         } else {
             return null;
