@@ -5,6 +5,7 @@ import com.example.uniapp_test1.pojo.User;
 import com.example.uniapp_test1.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,5 +46,10 @@ public class UserController {
     @PutMapping
     public SzpJsonResult<Integer> updateUserById(@RequestBody User user){
         return SzpJsonResult.ok(userService.updateUser(user));
+    }
+    @ApiOperation("insertUser")
+    @PutMapping
+    public SzpJsonResult<Integer> insertUser(@RequestBody User user){
+        return SzpJsonResult.ok(userService.insertUser(user));
     }
 }

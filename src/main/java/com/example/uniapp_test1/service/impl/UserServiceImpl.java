@@ -56,7 +56,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer insertUser(User user) {
-        if (!StringUtils.isEmpty(user.getPhoneNumber())||StringUtils.isEmpty(user.getSpOpenId())||StringUtils.isEmpty(user.getWxOpenId())){
+        if (StringUtils.isEmpty(user.getPhoneNumber())||StringUtils.isEmpty(user.getPassword())){
+            return 0;
+        }
+        List<User> userByPhoneNumber = userDao.findUserByPhoneNumber(user.getPhoneNumber());
+        if (CollectionUtils.isEmpty(userByPhoneNumber)){
             return userDao.insertUser(user);
         }
         return 0;

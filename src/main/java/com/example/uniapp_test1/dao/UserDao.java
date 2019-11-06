@@ -52,4 +52,12 @@ public class UserDao {
     public Integer insertUser(User user){
         return userMapper.insert(user);
     }
+
+    public List<User> findUserByPhoneNumber(String phoneNumber){
+        UserExample userExample=new UserExample();
+        userExample.createCriteria()
+                .andPhoneNumberEqualTo(phoneNumber);
+        return userMapper.selectByExample(userExample);
+    }
+
 }
