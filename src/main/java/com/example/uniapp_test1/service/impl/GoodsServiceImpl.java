@@ -31,7 +31,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public GoodSearchResponse searchGoods(String goodsName, Integer size, Integer page) {
         if (StringUtils.isEmpty(goodsName)){
-             return getGoodSearchResponse( goodsDao.findGoodsNameLike(goodsName, size, page));
+             return getGoodSearchResponse( goodsDao.findGoodsNameLike(goodsName, page, size));
         }
         else {
             return getGoodSearchResponse(goodsDao.findAllGoods(page, size));

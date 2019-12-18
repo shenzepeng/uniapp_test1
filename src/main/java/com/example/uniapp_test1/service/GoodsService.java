@@ -13,7 +13,7 @@ import java.util.List;
  * @Description: 沈泽鹏写点注释吧
  */
 public interface GoodsService {
-    GoodSearchResponse searchGoods(String goodsName, Integer page, Integer size);
+    GoodSearchResponse searchGoods(String goodsName, Integer size, Integer page);
     List<Goods> findAllGoods(Integer size,Integer page);
     Goods findGoodById(Long id);
     Integer insertGoods(GoodsRequest goodsRequest);
