@@ -19,4 +19,5 @@ public interface GoodsService {
     Integer insertGoods(GoodsRequest goodsRequest);
     Integer updateGoodsById(GoodsRequest goodsRequest);
     Integer deleteGoodsById(Long id);
+
 }

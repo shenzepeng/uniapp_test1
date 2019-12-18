@@ -47,4 +47,10 @@ public class GoodsController {
     public SzpJsonResult<Integer> detete(@PathVariable("id")Long id){
         return SzpJsonResult.ok(goodsService.deleteGoodsById(id));
     }
+    @ApiOperation("findall")
+    @GetMapping("find/all")
+    public SzpJsonResult<Goods> findAll(@RequestParam(value = "page",defaultValue = "1") Integer page,
+                                        @RequestParam(value = "size",defaultValue = "10")Integer size){
+        return SzpJsonResult.ok(goodsService.findAllGoods(page,size));
+    }
 }
