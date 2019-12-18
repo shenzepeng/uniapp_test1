@@ -30,7 +30,7 @@ public class GoodsController {
     public SzpJsonResult<Goods>  searchGoods(@RequestParam(value = "page",defaultValue = "1") Integer page,
                                               @RequestParam(value = "size",defaultValue = "10")Integer size,
                                              @RequestParam(value = "goodsName",defaultValue = "")String goodsName ){
-        return SzpJsonResult.ok(goodsService.searchGoods(goodsName,page,size));
+        return SzpJsonResult.ok(goodsService.searchGoods(goodsName,size,page));
     }
     @ApiOperation("add")
     @PostMapping
