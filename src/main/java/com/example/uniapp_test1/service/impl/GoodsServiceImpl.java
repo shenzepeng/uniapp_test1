@@ -39,8 +39,9 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public PageInfo<Goods> findAllGoods(Integer size,Integer page) {
-        return goodsDao.findAllGoods(size, page);
+    public List<Goods> findAllGoods(Integer size,Integer page) {
+        List<Goods> list = goodsDao.findAllGoods(size, page).getList();
+        return list;
     }
 
     @Override

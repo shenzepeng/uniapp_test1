@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface GoodsService {
     GoodSearchResponse searchGoods(String goodsName, Integer page, Integer size);
-    PageInfo<Goods> findAllGoods(Integer size,Integer page);
+    List<Goods> findAllGoods(Integer size,Integer page);
     Goods findGoodById(Long id);
     Integer insertGoods(GoodsRequest goodsRequest);
     Integer updateGoodsById(GoodsRequest goodsRequest);
