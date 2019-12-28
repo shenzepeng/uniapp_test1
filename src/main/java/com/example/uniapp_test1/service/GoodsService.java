@@ -1,6 +1,7 @@
 package com.example.uniapp_test1.service;
 
 import com.example.uniapp_test1.pojo.Goods;
+import com.example.uniapp_test1.request.AddGoodsRequest;
 import com.example.uniapp_test1.request.GoodsRequest;
 import com.example.uniapp_test1.response.GoodSearchResponse;
 import com.github.pagehelper.PageInfo;
@@ -16,7 +17,7 @@ public interface GoodsService {
     GoodSearchResponse searchGoods(String goodsName, Integer size, Integer page);
     List<Goods> findAllGoods(Integer size,Integer page);
     Goods findGoodById(Long id);
-    Integer insertGoods(GoodsRequest goodsRequest);
+    Integer insertGoods(AddGoodsRequest goodsRequest);
     Integer updateGoodsById(GoodsRequest goodsRequest);
     Integer deleteGoodsById(Long id);
 

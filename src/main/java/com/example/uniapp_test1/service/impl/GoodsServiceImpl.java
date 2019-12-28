@@ -4,6 +4,7 @@ import com.example.uniapp_test1.bo.GoodsImgBo;
 import com.example.uniapp_test1.dao.GoodsDao;
 import com.example.uniapp_test1.mapper.GoodsMapper;
 import com.example.uniapp_test1.pojo.Goods;
+import com.example.uniapp_test1.request.AddGoodsRequest;
 import com.example.uniapp_test1.request.GoodsRequest;
 import com.example.uniapp_test1.response.GoodSearchResponse;
 import com.example.uniapp_test1.service.GoodsService;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,13 +52,15 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public Integer insertGoods(GoodsRequest goodsRequest) {
+    public Integer insertGoods(AddGoodsRequest goodsRequest) {
         Goods goods=new Goods();
         BeanUtils.copyProperties(goodsRequest,goods);
         List<GoodsImgBo> goodsImgBoList = goodsRequest.getGoodsImgBoList();
         if (!CollectionUtils.isEmpty(goodsImgBoList)){
             goods.setGoodsImgs( JsonUtils.objectToJson(goodsImgBoList));
         }
+        goods.setUpdateTime(new Date());
+        goods.setCreateTime(new Date());
         log.info("添加商品-{}",goods);
         return goodsDao.insertGoods(goods);
     }

@@ -1,6 +1,8 @@
 package com.example.uniapp_test1.service;
 
 import com.example.uniapp_test1.pojo.User;
+import com.example.uniapp_test1.request.AddUserRequest;
+import com.example.uniapp_test1.request.UserRequest;
 
 import java.util.List;
 
@@ -44,12 +46,12 @@ public interface UserService {
      * @param user
      * @return
      */
-    Integer insertUser(User user);
+    Integer insertUser(AddUserRequest user);
 
     /**
      * 更新用户
      * @param user
      * @return
      */
-    Integer updateUser(User user);
+    Integer updateUser(UserRequest user);
 }

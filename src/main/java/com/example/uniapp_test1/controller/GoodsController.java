@@ -2,6 +2,7 @@ package com.example.uniapp_test1.controller;
 
 import com.example.uniapp_test1.common.SzpJsonResult;
 import com.example.uniapp_test1.pojo.Goods;
+import com.example.uniapp_test1.request.AddGoodsRequest;
 import com.example.uniapp_test1.request.GoodsRequest;
 import com.example.uniapp_test1.service.GoodsService;
 import io.swagger.annotations.Api;
@@ -34,7 +35,7 @@ public class GoodsController {
     }
     @ApiOperation("add")
     @PostMapping
-    public SzpJsonResult<Integer> add(@RequestBody GoodsRequest goods){
+    public SzpJsonResult<Integer> add(@RequestBody AddGoodsRequest goods){
         return SzpJsonResult.ok(goodsService.insertGoods(goods));
     }
     @ApiOperation("update")

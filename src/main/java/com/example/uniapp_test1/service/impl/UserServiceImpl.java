@@ -2,12 +2,16 @@ package com.example.uniapp_test1.service.impl;
 
 import com.example.uniapp_test1.dao.UserDao;
 import com.example.uniapp_test1.pojo.User;
+import com.example.uniapp_test1.request.AddUserRequest;
+import com.example.uniapp_test1.request.UserRequest;
 import com.example.uniapp_test1.service.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,19 +59,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer insertUser(User user) {
+    public Integer insertUser(AddUserRequest user) {
         if (StringUtils.isEmpty(user.getPhoneNumber())||StringUtils.isEmpty(user.getPassword())){
             return 0;
         }
         List<User> userByPhoneNumber = userDao.findUserByPhoneNumber(user.getPhoneNumber());
+        User user1=new User();
+        BeanUtils.copyProperties(user,user1);
+        user1.setCreateTime(new Date());
+        user1.setUpdateTime(new Date());
         if (CollectionUtils.isEmpty(userByPhoneNumber)){
-            return userDao.insertUser(user);
+            return userDao.insertUser(user1);
         }
         return 0;
     }
 
     @Override
-    public Integer updateUser(User user) {
-        return userDao.updateUserById(user);
+    public Integer updateUser(UserRequest user) {
+        User user1=new User();
+        BeanUtils.copyProperties(user,user1);
+        user1.setUpdateTime(new Date());
+        return userDao.updateUserById(user1);
     }
 }

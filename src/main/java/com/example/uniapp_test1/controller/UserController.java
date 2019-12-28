@@ -2,6 +2,8 @@ package com.example.uniapp_test1.controller;
 
 import com.example.uniapp_test1.common.SzpJsonResult;
 import com.example.uniapp_test1.pojo.User;
+import com.example.uniapp_test1.request.AddUserRequest;
+import com.example.uniapp_test1.request.UserRequest;
 import com.example.uniapp_test1.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,16 +28,6 @@ public class UserController {
     public SzpJsonResult<User> findUserByUseId(@PathVariable("id") Long id){
         return SzpJsonResult.ok(userService.findUserById(id));
     }
-    @ApiOperation("findUserByWxOpenId")
-    @GetMapping("/ifo/{wxOpenId}")
-    public SzpJsonResult<User> findUserByWxOpenId(@PathVariable("wxOpenId") String wxOpenId){
-        return SzpJsonResult.ok(userService.findUserByWxOpenId(wxOpenId));
-    }
-    @ApiOperation("findUserBySpOpenId")
-    @GetMapping("/ifo/{spOpenId}")
-    public SzpJsonResult<User> findUserBySpOpenId(@PathVariable("spOpenId")String spOpenId){
-        return SzpJsonResult.ok(userService.findUserBySpOpenId(spOpenId));
-    }
     @ApiOperation("findUserBySpOpenId")
     @GetMapping("login")
     public SzpJsonResult<User> findUserBySpOpenId(@RequestParam(value = "phoneNumber",required = true) String phoneNumber,
@@ -44,12 +36,12 @@ public class UserController {
     }
     @ApiOperation("updateUserById")
     @PutMapping
-    public SzpJsonResult<Integer> updateUserById(@RequestBody User user){
+    public SzpJsonResult<Integer> updateUserById(@RequestBody UserRequest user){
         return SzpJsonResult.ok(userService.updateUser(user));
     }
     @ApiOperation("insertUser")
     @PostMapping
-    public SzpJsonResult<Integer> insertUser(@RequestBody User user){
+    public SzpJsonResult<Integer> insertUser(@RequestBody AddUserRequest user){
         return SzpJsonResult.ok(userService.insertUser(user));
     }
 }
