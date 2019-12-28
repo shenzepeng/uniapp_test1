@@ -9,10 +9,7 @@ import lombok.Data;
  */
 @Data
 public class AddUserRequest {
-
-    private String spOpenId;
-
-    private String wxOpenId;
+    
 
     private String phoneNumber;
 

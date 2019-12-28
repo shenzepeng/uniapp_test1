@@ -14,10 +14,6 @@ import java.util.Date;
 public class UserRequest {
     private Long id;
 
-    private String spOpenId;
-
-    private String wxOpenId;
-
     private String phoneNumber;
 
     private String headUrl;
