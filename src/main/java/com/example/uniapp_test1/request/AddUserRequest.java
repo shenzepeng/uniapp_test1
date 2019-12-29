@@ -9,7 +9,7 @@ import lombok.Data;
  */
 @Data
 public class AddUserRequest {
-    
+
 
     private String phoneNumber;
 

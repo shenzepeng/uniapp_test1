@@ -30,5 +30,5 @@ public class AddGoodsRequest {
     /**
      * 商品详情多图
      */
-    private List<GoodsImgBo> goodsImgBoList;
+    private List<String> goodsImgBoList;
 }

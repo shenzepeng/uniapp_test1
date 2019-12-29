@@ -18,7 +18,9 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @Auther: szp
@@ -55,9 +57,14 @@ public class GoodsServiceImpl implements GoodsService {
     public Integer insertGoods(AddGoodsRequest goodsRequest) {
         Goods goods=new Goods();
         BeanUtils.copyProperties(goodsRequest,goods);
-        List<GoodsImgBo> goodsImgBoList = goodsRequest.getGoodsImgBoList();
+        List<String> goodsImgBoList = goodsRequest.getGoodsImgBoList();
         if (!CollectionUtils.isEmpty(goodsImgBoList)){
-            goods.setGoodsImgs( JsonUtils.objectToJson(goodsImgBoList));
+            HashMap<String,String> hashMap=new HashMap<>();
+            for (String s : goodsImgBoList) {
+                String uuid= UUID.randomUUID().toString();
+                hashMap.put(uuid,s);
+            }
+            goods.setGoodsImgs( JsonUtils.objectToJson(hashMap));
         }
         goods.setUpdateTime(new Date());
         goods.setCreateTime(new Date());
