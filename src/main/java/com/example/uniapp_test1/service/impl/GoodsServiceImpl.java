@@ -78,6 +78,12 @@ public class GoodsServiceImpl implements GoodsService {
         BeanUtils.copyProperties(goodsRequest,goods);
         List<GoodsImgBo> goodsImgBoList = goodsRequest.getGoodsImgBoList();
         if (!CollectionUtils.isEmpty(goodsImgBoList)){
+            for (GoodsImgBo goodsImgBo : goodsImgBoList) {
+               if (StringUtils.isEmpty(goodsImgBo.getImgUUID())){
+                   String uuid= UUID.randomUUID().toString();
+                   goodsImgBo.setImgUUID(uuid);
+               }
+            }
             goods.setGoodsImgs( JsonUtils.objectToJson(goodsImgBoList));
         }
         return goodsDao.updateGoodsById(goods);
